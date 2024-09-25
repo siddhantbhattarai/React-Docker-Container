@@ -88,11 +88,10 @@ Before you begin, ensure you have the following:
    sudo apt install -y docker.io
    ```
 
-3. **Add Your User to the Docker Group**:
+3. **Change the owner for docker**:
    ```bash
-   sudo usermod -aG docker $USER
+   sudo chown $USER /var/run/docker.sock
    ```
-   **Note**: You may need to log out and log back in for the changes to take effect.
 
 4. **Verify Docker Installation**:
    ```bash
@@ -103,17 +102,12 @@ Before you begin, ensure you have the following:
 
 ### Step 4: Clone the Repository on the VM
 
-1. **Install Git** (if not already installed):
-   ```bash
-   sudo apt install -y git
-   ```
-
-2. **Clone the Project**:
+1. **Clone the Project**:
    ```bash
    git clone https://github.com/walifile/react-resturant-website-theme.git
    ```
 
-3. **Navigate into the Project Directory**:
+2. **Navigate into the Project Directory**:
    ```bash
    cd react-resturant-website-theme
    ```
@@ -167,7 +161,7 @@ Before you begin, ensure you have the following:
    CMD ["nginx", "-g", "daemon off;"]
    ```
 
-3. **Save the Dockerfile** and exit (`Ctrl + X`, then `Y`, and `Enter`).
+3. **Save the Dockerfile** and exit (`Ctrl + s`, then `Ctrl + x` to exit).
 
 ---
 
@@ -271,7 +265,13 @@ If you didn't open port `80` during VM creation, you need to allow inbound traff
   ```bash
   sudo usermod -aG docker $USER
   ```
+
   Then, log out and log back in.
+  Or
+  ```bash
+  sudo chown $USER /var/run/docker.sock
+  ```
+
 
 - **Docker Build Fails**:  
   Ensure all dependencies are correctly installed and that you're connected to the internet.
